@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Bookmark App 🔖
 
-## Getting Started
+This is a modern bookmark manager that lets you save your favorite links. I built it using **Next.js 15**, **Supabase**, and **Tailwind CSS**.
 
-First, run the development server:
+It features **Google Login**, **Secure Data**, and **Instant Updates** (Realtime).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Live Demo
+- **Vercel URL**: [https://smart-bookmark-app-two-hazel.vercel.app](https://smart-bookmark-app-two-hazel.vercel.app)
+- **GitHub Repo**: [Your GitHub Repo URL Here](https://github.com/your-username/smart-bookmark-app)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## �️ What I Built
+A full-stack application where users can:
+1.  **Sign in with Google** (Secure authentication).
+2.  **Add Bookmarks** (Title & URL).
+3.  **Delete Bookmarks**.
+4.  **See Updates Instantly** across multiple tabs/devices without refreshing.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🤔 Problems I Ran Into & How I Solved Them
+*(This section is for the submission requirement)*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Realtime DELETE was not working
+**The Problem:** When I deleted a bookmark in one tab, the other tab did not update automatically.
+**Why:** By default, Supabase only sends the `ID` of the deleted row, but not the `user_id`. My app was filtering updates by `user_id`, so it ignored the delete event.
+**The Solution:** I ran a special SQL command:
+\`\`\`sql
+alter table bookmarks replica identity full;
+\`\`\`
+This forced the database to send *all* data (including `user_id`) when a row is deleted, allowing my filter to work.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Login Redirected to Home instead of Dashboard
+**The Problem:** After signing in, users stayed on the homepage.
+**The Solution:** I updated the OAuth configuration to explicitly redirect to `window.location.origin + '/dashboard'`. I also added a check on the homepage to automatically redirect logged-in users to the dashboard.
 
-## Deploy on Vercel
+### 3. Google Login Failed After Deployment
+**The Problem:** Authentication worked locally (`localhost:3000`) but failed on the Vercel live site.
+**The Solution:** I had to register the new Vercel URL in two places:
+1.  **Supabase Auth Settings**: Added the Vercel URL to "Site URL" and "Redirect URLs".
+2.  **Google Cloud Console**: Verified that Supabase callback URL was correct.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## � Tech Stack
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS
+- **Backend & Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth (Google OAuth)
+- **Realtime**: Supabase Realtime (WebSockets)
+
+---
+
+## ⚙️ How to Run Locally
+
+1.  **Clone the repo**:
+    \`\`\`bash
+    git clone https://github.com/your-username/smart-bookmark-app.git
+    cd smart-bookmark-app
+    \`\`\`
+
+2.  **Install packages**:
+    \`\`\`bash
+    npm install
+    \`\`\`
+
+3.  **Set up Environment Variables**:
+    Create a \`.env.local\` file and add your Supabase keys:
+    \`\`\`
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    \`\`\`
+
+4.  **Run the app**:
+    \`\`\`bash
+    npm run dev
+    \`\`\`
+    Open [http://localhost:3000](http://localhost:3000).
