@@ -21,7 +21,6 @@ A full-stack application where users can:
 ---
 
 ## 🤔 Problems I Ran Into & How I Solved Them
-*(This section is for the submission requirement)*
 
 ### 1. Realtime DELETE was not working
 **The Problem:** When I deleted a bookmark in one tab, the other tab did not update automatically.
