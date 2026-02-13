@@ -91,12 +91,25 @@ export default function Dashboard() {
         }
     }
 
+    const handleLogout = async () => {
+        await supabase.auth.signOut()
+        window.location.href = '/'
+    }
+
     return (
         <div className="min-h-screen bg-gray-50 p-10">
             <div className="max-w-4xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-                    {user && <p className="text-gray-600">Logged in as: {user.email}</p>}
+                    <div className="flex items-center gap-4">
+                        {user && <p className="text-gray-600">Logged in as: {user.email}</p>}
+                        <button
+                            onClick={handleLogout}
+                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                        >
+                            Logout
+                        </button>
+                    </div>
                 </div>
 
                 <div className="bg-white p-6 rounded-lg shadow-md mb-8">

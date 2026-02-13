@@ -1,8 +1,23 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 import LoginButton from '@/components/LoginButton';
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      if (data?.user) {
+        router.push('/dashboard');
+      }
+    };
+    checkUser();
+  }, [router]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
