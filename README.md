@@ -20,6 +20,14 @@ A full-stack application where users can:
 
 ---
 
+## 🏗️ Architecture Highlights
+- Implemented Row Level Security (RLS) for per-user data isolation
+- Used Supabase Realtime subscriptions instead of polling
+- OAuth handled via Supabase Auth with secure redirect flow
+
+
+---
+
 ## 🤔 Problems I Ran Into & How I Solved Them
 
 ### 1. Realtime DELETE was not working
