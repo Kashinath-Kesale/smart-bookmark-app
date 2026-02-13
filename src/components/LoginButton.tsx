@@ -15,7 +15,7 @@ export default function LoginButton() {
     return (
         <button
             onClick={handleLogin}
-            className="flex items-center gap-2 bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50 transition-colors font-medium"
+            className="flex items-center gap-2 bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-50 transition-colors font-medium cursor-pointer"
         >
             <img
                 src="https://www.google.com/favicon.ico"
