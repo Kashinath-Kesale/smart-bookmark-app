@@ -62,17 +62,17 @@ This forced the database to send *all* data (including `user_id`) when a row is 
 ## ⚙️ How to Run Locally
 
 1.  **Clone the repo**:
-- git clone https://github.com/your-username/smart-bookmark-app.git
-- cd smart-bookmark-app
+    - git clone https://github.com/your-username/smart-bookmark-app.git
+    - cd smart-bookmark-app
 
 2.  **Install packages**:
-- npm install
+    - npm install
 
 3.  **Set up Environment Variables**:
-- Create a \`.env.local\` file and add your Supabase keys:
-- NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-- NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    - Create a \`.env.local\` file and add your Supabase keys:
+    - NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+    - NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 5.  **Run the app**:
-- npm run dev
-- Open [http://localhost:3000](http://localhost:3000).
+    - npm run dev
+    - Open [http://localhost:3000](http://localhost:3000).
