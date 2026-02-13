@@ -8,7 +8,6 @@ It features **Google Login**, **Secure Data**, and **Instant Updates** (Realtime
 
 ## 🚀 Live Demo
 - **Vercel URL**: [https://smart-bookmark-app-two-hazel.vercel.app](https://smart-bookmark-app-two-hazel.vercel.app)
-- **GitHub Repo**: [Your GitHub Repo URL Here](https://github.com/your-username/smart-bookmark-app)
 
 ---
 
